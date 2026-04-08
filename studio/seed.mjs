@@ -45,7 +45,7 @@ const biography = [
       {
         _type: "span",
         _key: "bio1s",
-        text: "Där den amerikanska södern har sina vidsträckta prärier, har Vincent Jedselius Bergslagens spruckna asfalt och tystnaden från nedlagda fabriker. Under nästan 15 år som soloartist har han karvat ut en helt egen nisch i det svenska musiklandskapet: en röst för det glömda rostbältet.",
+        text: "Där den amerikanska södern har sina prärier, har Vincent Jedselius Bergslagens spruckna asfalt och tystnaden från nedlagda fabriker. I mer än ett decennium har han karvat ut en egen nisch i det svenska musiklandskapet som en röst för bruksorterna.",
         marks: [],
       },
     ],
@@ -59,7 +59,7 @@ const biography = [
       {
         _type: "span",
         _key: "bio2s",
-        text: "Att kalla Vincent Jedselius för en countryartist är en sanning med modifikation. Hans sound vilar lika tungt i en tidlös blues-anda som i outlaw-genrens råa uppriktighet. Han byter ut cowboyhatten mot arbetshandskar och Nashville-glamouren mot en kantnött, svensk realism. Det är musik som doftar utflyttning, bryggkaffe och fuktig barrskog. En röst för de platser som sällan får plats i storstädernas lite glättigare popmaskineri.",
+        text: "Att kalla Vincent för en renodlad countryartist är en förenkling. Hans sound vilar lika mycket i bluesens enkelhet som i en rå, svensk realism. Här byts Nashville-glamouren ut mot doften av bryggkaffe och fuktig barrskog – musik för de platser som sällan får utrymme i storstädernas popmaskineri.",
         marks: [],
       },
     ],
@@ -73,7 +73,7 @@ const biography = [
       {
         _type: "span",
         _key: "bio3s",
-        text: "Med en karriär som sträcker sig över ett decennium har Vincent etablerat sig som en av de mest autentiska rösterna inom svensk americana. Genom åren har han byggt ett gediget CV på vägarna och spelat på allt från pizzerior i Bergslagen till fullstora festivalscener ute i landet.",
+        text: "Med många mil på vägarna har han byggt sin erfarenhet på allt från lokala pizzerior till festivalscener. Genom träffsäker humor och satir skildrar han vardagen i småstaden, men under ytan finns ett allvar om slit, stolthet och den melankoli som dröjer kvar när industrin tystnat.",
         marks: [],
       },
     ],
@@ -87,21 +87,7 @@ const biography = [
       {
         _type: "span",
         _key: "bio4s",
-        text: "Hans artisteri vilar på en unik kontrastverkan. Genom träffsäker satir och svart humor skildrar han vardagen i våra svenska småstäder. Men under ytan av lokala referenser bultar bluesens bottenlösa allvar om stolthet, slit och den melankoli som uppstår när industrins hammarslag tystnar.",
-        marks: [],
-      },
-    ],
-    markDefs: [],
-  },
-  {
-    _type: "block",
-    _key: "bio5",
-    style: "normal",
-    children: [
-      {
-        _type: "span",
-        _key: "bio5s",
-        text: "Vincent Jedselius är inte bara en musiker; han är en krönikör över ett Sverige som ofta glöms bort, levererat med en röst som bär på både tyngden av många års erfarenhet och en orubblig kärlek till ursprunget.",
+        text: "Vincent Jedselius sjunger om det Sverige som ofta glöms bort, levererat med en ärlig röst och en tydlig kärlek till rötterna.",
         marks: [],
       },
     ],
@@ -138,8 +124,29 @@ async function seed() {
     _type: "siteSettings",
     biography,
     contactEmail: "booking@bridgefieldbookings.se",
+    documentaryVideo: "https://www.youtube.com/embed/B6q9y2d-IBc",
+    youtubeVideos: [
+      {
+        _key: "vid1",
+        url: "https://www.youtube.com/embed/ILoNFcOGLMY",
+        title: "Kom Fattigdom",
+        description: "Bildmaterial från Rune Lindströms film \"Fagersta: Stålets och arbetets stad.\""
+      },
+      {
+        _key: "vid2",
+        url: "https://www.youtube.com/embed/YxQ7WmdM3XA",
+        title: "\"66AN\"",
+        description: "Live från Clarion Örebro"
+      },
+      {
+        _key: "vid3",
+        url: "https://www.youtube.com/embed/Kpg47xr6sOw",
+        title: "\"Strömsholms Kanal\"",
+        description: "Live i Halvarsviken"
+      }
+    ]
   });
-  console.log("  ✓ Biography & contact email");
+  console.log("  ✓ Biography, contact email & YouTube videos");
 
   console.log("\n✅ Done! All content is now in Sanity.");
 }
