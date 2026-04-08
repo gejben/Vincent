@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create:*)",
+      "Bash(cp -r /d/code/vincent/astro-temp/* /d/code/vincent/astro-temp/.* /d/code/vincent/)",
+      "Bash(rm -rf /d/code/vincent/astro-temp)",
+      "Bash(npm install:*)",
+      "Bash(npx astro:*)",
+      "Bash(npm run:*)",
+      "Bash(npx node:*)",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_take_screenshot",
+      "mcp__playwright__browser_snapshot",
+      "Bash(kill %1)",
+      "Bash(npx sharp-cli:*)",
+      "Bash(git remote:*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "mcp__playwright__browser_resize",
+      "Bash(node:*)",
+      "mcp__playwright__browser_press_key",
+      "mcp__playwright__browser_wait_for",
+      "mcp__playwright__browser_evaluate"
+    ]
+  }
+}
