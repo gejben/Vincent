@@ -1,0 +1,99 @@
+SÅ HÄR REDIGERAR DU HEMSIDAN
+==============================
+
+Allt innehåll på hemsidan styrs från Sanity Studio — ett webbverktyg där du kan ändra texter, bilder, spelningar och videos utan att röra kod.
+
+Logga in här: https://vincent-jedselius.sanity.studio/
+
+
+ÖVERSIKT — VAD LIGGER VAR?
+---------------------------
+
+Spelning        → Listan med kommande och tidigare spelningar
+Släpp           → Diskografi-sektionen (skivor, singlar, EP:s)
+Inställningar   → Allt annat: hero-bild, biografi, YouTube-klipp, dokumentärvideo, kontaktmail, pressbilder
+
+
+1. SPELNINGAR
+-------------
+
+Klicka på "Spelning" i vänstermenyn.
+
+Lägga till en ny spelning:
+  1. Klicka "Create new" (+-knappen uppe till höger)
+  2. Fyll i:
+     - Datum — välj datum och tid
+     - Plats/Scen — t.ex. "Pumphuset"
+     - Stad — t.ex. "Västerås"
+     - Biljettlänk — klistra in URL till biljettköp (lämna tomt om fri entré)
+     - Slutsålt — bocka i om det är utsålt
+     - Status — "Kommande", "Inställt" eller "Uppskjutet"
+  3. Klicka "Publish" (grön knapp nere till höger)
+
+Redigera en spelning:
+  1. Klicka på spelningen i listan
+  2. Ändra det du vill
+  3. Klicka "Publish"
+
+Ta bort en spelning:
+  1. Öppna spelningen
+  2. Klicka på "..." (tre prickar uppe till höger) → "Delete"
+
+OBS: Gamla spelningar försvinner inte automatiskt — de hamnar under "Tidigare spelningar" på sajten. Du behöver inte ta bort dem.
+
+
+2. SLÄPP (DISKOGRAFI)
+---------------------
+
+Klicka på "Släpp" i vänstermenyn.
+
+Lägga till ett nytt släpp:
+  1. Klicka "Create new"
+  2. Fyll i:
+     - Titel — t.ex. "Kom Fattigdom"
+     - Releasedatum — datumet skivan/singeln släpptes
+     - Omslag — ladda upp omslagsbilden (dra och släpp eller klicka)
+     - Spotify-länk — URL till låten/albumet på Spotify
+     - Apple Music-länk — URL till Apple Music (valfritt)
+     - YouTube-länk — URL till musikvideon på YouTube (valfritt)
+  3. Klicka "Publish"
+
+Släppen sorteras automatiskt med det nyaste först.
+
+
+3. INSTÄLLNINGAR (HERO-BILD, BIO, VIDEOS M.M.)
+------------------------------------------------
+
+Klicka på "Inställningar" i vänstermenyn. Här finns bara ETT dokument som styr flera delar av sajten:
+
+Hero-bild
+  Den stora bilden högst upp på startsidan. Klicka på bildfältet för att ladda upp en ny. Använd en högupplöst bild (minst 1920px bred).
+
+Biografi
+  Texten i "Om"-sektionen. Du kan formatera med fet, kursiv och styckebrytningar precis som i ett vanligt ordbehandlingsprogram.
+
+Dokumentärvideo
+  YouTube-länken till den stora videon under "Om"-sektionen (just nu "Till Bergslagen"). Klistra in en vanlig YouTube-URL, t.ex:
+  https://www.youtube.com/watch?v=B6q9y2d-IBc
+
+Utvalda YouTube-klipp
+  Videorna som visas i rutnätet under "Titta"-sektionen. För varje klipp:
+  - YouTube-länk — URL:en till videon
+  - Titel — namnet som visas under videon
+  - Kort beskrivning — t.ex. "Live från Clarion Örebro"
+  Du kan lägga till, ta bort och ändra ordning genom att dra och släppa.
+
+Kontakt-email
+  E-postadressen som visas i kontakt-sektionen.
+
+Pressbilder
+  Högupplösta bilder som kan laddas ner av press. Lägg till flera genom att klicka "Add item".
+
+
+VIKTIGT ATT VETA
+-----------------
+
+- Publish — Ändringar syns INTE på hemsidan förrän du klickar "Publish". Innan dess är det bara ett utkast.
+- Uppdateringstid — Efter att du publicerar tar det ca 1-2 minuter innan ändringen syns på hemsidan (den bygger om automatiskt).
+- Bilder — Ladda upp bilder i så hög upplösning som möjligt. Hemsidan skalar ner dem automatiskt.
+- Ångra — Du kan alltid gå tillbaka till en tidigare version. Klicka "..." → "History" på ett dokument för att se alla ändringar.

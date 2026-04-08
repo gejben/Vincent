@@ -343,6 +343,36 @@ function formatDateShort(dateStr: string) {
         </div>
       </div>
 
+      <!-- Pressbilder -->
+      <div class="max-w-4xl mx-auto mt-20">
+        <h3 class="text-2xl md:text-3xl font-heading font-bold mb-6 text-center">Pressbilder</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {settings?.pressImages?.length > 0 ? (
+            settings.pressImages.map((img: any) => {
+              const thumbUrl = urlFor(img).width(400).height(500).format("webp").url();
+              const fullUrl = urlFor(img).width(1920).format("webp").url();
+              return (
+                <a href={fullUrl} download target="_blank" rel="noopener noreferrer" class="group block rounded-lg overflow-hidden border border-charcoal-800 hover:border-forest-600 transition-colors">
+                  <img src={thumbUrl} alt="Pressbild Vincent Jedselius" loading="lazy" class="w-full h-full object-cover aspect-[4/5] transition-transform duration-300 group-hover:scale-105" />
+                </a>
+              );
+            })
+          ) : (
+            [
+              { src: "/press/portrait.jpg", alt: "Vincent Jedselius porträtt" },
+              { src: "/press/lake-guitar.jpg", alt: "Vincent Jedselius vid sjön med gitarr" },
+              { src: "/press/tracks-guitar.jpg", alt: "Vincent Jedselius på järnvägsspår med gitarr" },
+              { src: "/press/tracks-fullbody.jpg", alt: "Vincent Jedselius på järnvägsspår" },
+            ].map((img) => (
+              <a href={img.src} download target="_blank" rel="noopener noreferrer" class="group block rounded-lg overflow-hidden border border-charcoal-800 hover:border-forest-600 transition-colors">
+                <img src={img.src} alt={img.alt} loading="lazy" class="w-full h-full object-cover aspect-[4/5] transition-transform duration-300 group-hover:scale-105" />
+              </a>
+            ))
+          )}
+        </div>
+        <p class="mt-4 text-center text-bone-300/60 text-sm">Klicka för att ladda ner i full upplösning.</p>
+      </div>
+
       <div class="max-w-4xl mx-auto mt-20">
         <h3 class="text-2xl md:text-3xl font-heading font-bold mb-6 text-center">Till Bergslagen: Vincent Jedselius och bandet</h3>
         <div class="aspect-video rounded-lg overflow-hidden bg-charcoal-800 shadow-xl border border-charcoal-800">
@@ -368,7 +398,7 @@ function formatDateShort(dateStr: string) {
       <div class="max-w-3xl mx-auto grid md:grid-cols-2 gap-12">
         <!-- Contact form -->
         <form
-          action="https://formsubmit.co/booking@bridgefieldbookings.se"
+          action="https://formsubmit.co/info@vincentjedselius.se"
           method="POST"
           class="space-y-5"
         >
