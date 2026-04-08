@@ -52,8 +52,9 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://vincentj
   <body class="min-h-screen bg-charcoal-950 text-bone-100">
     <header class="fixed top-0 w-full z-50 bg-charcoal-950/90 backdrop-blur-sm border-b border-charcoal-800">
       <nav class="max-w-[var(--container-max)] mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="/" class="font-heading text-xl font-bold tracking-wide text-bone-100 hover:text-gold transition-colors">
-          Vincent Jedselius
+        <a href="/" class="flex items-center gap-3 text-bone-100 hover:text-gold transition-colors">
+          <img src="/images/logo.png" alt="" class="w-8 h-8" />
+          <span class="font-heading text-xl font-bold tracking-wide">Vincent Jedselius</span>
         </a>
         <ul class="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide uppercase">
           <li><a href="#spelningar" class="text-bone-300 hover:text-bone-100 transition-colors">Spelningar</a></li>
@@ -82,9 +83,10 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://vincentj
       <slot />
     </main>
 
-    <footer class="border-t border-charcoal-800 py-8 mt-20">
-      <div class="max-w-[var(--container-max)] mx-auto px-6 text-center text-sm text-charcoal-600">
-        <p>&copy; {new Date().getFullYear()} Vincent Jedselius. Alla rättigheter förbehållna.</p>
+    <footer class="border-t border-charcoal-800 py-12 mt-20">
+      <div class="max-w-[var(--container-max)] mx-auto px-6 flex flex-col items-center gap-4">
+        <img src="/images/logo.png" alt="Vincent Jedselius" class="w-12 h-12 opacity-40" />
+        <p class="text-sm text-charcoal-600">&copy; {new Date().getFullYear()} Vincent Jedselius. Alla rättigheter förbehållna.</p>
       </div>
     </footer>
 
