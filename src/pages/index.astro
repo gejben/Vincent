@@ -44,15 +44,16 @@ const upcomingFallbackDates = fallbackTourDates.filter(
 );
 
 // ── Fallback releases (from current site) ──
+// Spotify embed URLs: /embed/track/ID or /embed/album/ID with dark theme
 const fallbackReleases = [
-  { title: "66AN", spotifyUrl: "https://open.spotify.com/track/6HYADUN0TCZmzuymd8wvwJ?si=a9cd006cfd7246fc" },
-  { title: "Bergslagen", spotifyUrl: "https://open.spotify.com/track/0w7uWvMi9KUHfFf00Gtj08?si=1a29d3e898854e69" },
-  { title: "Ahlbäck", spotifyUrl: "https://open.spotify.com/track/7omQZAr6KZoVrqRw1guy2b?si=7949a618a97a4ef7" },
-  { title: "Kom Fattigdom", spotifyUrl: "https://open.spotify.com/track/2M1C1UgDBbCUbPdesgJJCg?si=bbf9b81e67d94e9f" },
-  { title: "Åmänningen", spotifyUrl: "https://open.spotify.com/track/4HwCeYaGEoDLfjujuYXrS8?si=d0db39c1e43344d7" },
-  { title: "Åka tåg för lånade pengar", spotifyUrl: "https://open.spotify.com/album/72V3S6286fdOIB3ykPP9Ff?si=ImBg_VZuSTiRV7bsBJzBYg" },
-  { title: "Första", spotifyUrl: "https://open.spotify.com/album/4KIdygXmd2xm5vsuAq8Jq7?si=6qTC89VuRL6wQBbt_eSSzA" },
-  { title: "Webcam Stories", spotifyUrl: "https://open.spotify.com/album/0tdwzfPhnhTWz3NHXLXTQZ?si=vye0QhAHSeu0C5TN0R3TwA" },
+  { title: "66AN", embedUrl: "https://open.spotify.com/embed/track/6HYADUN0TCZmzuymd8wvwJ?theme=0" },
+  { title: "Bergslagen", embedUrl: "https://open.spotify.com/embed/track/0w7uWvMi9KUHfFf00Gtj08?theme=0" },
+  { title: "Ahlbäck", embedUrl: "https://open.spotify.com/embed/track/7omQZAr6KZoVrqRw1guy2b?theme=0" },
+  { title: "Kom Fattigdom", embedUrl: "https://open.spotify.com/embed/track/2M1C1UgDBbCUbPdesgJJCg?theme=0" },
+  { title: "Åmänningen", embedUrl: "https://open.spotify.com/embed/track/4HwCeYaGEoDLfjujuYXrS8?theme=0" },
+  { title: "Åka tåg för lånade pengar", embedUrl: "https://open.spotify.com/embed/album/72V3S6286fdOIB3ykPP9Ff?theme=0" },
+  { title: "Första", embedUrl: "https://open.spotify.com/embed/album/4KIdygXmd2xm5vsuAq8Jq7?theme=0" },
+  { title: "Webcam Stories", embedUrl: "https://open.spotify.com/embed/album/0tdwzfPhnhTWz3NHXLXTQZ?theme=0" },
 ];
 
 // ── Fallback bio ──
@@ -268,32 +269,23 @@ function formatDateShort(dateStr: string) {
         </div>
       </div>
 
-      <!-- Releases from Sanity OR fallback -->
+      <!-- Releases as Spotify embeds -->
       <h3 class="text-2xl font-heading font-bold mb-8 text-center">Släpp</h3>
 
-      {albums.length > 0 ? (
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {albums.map((album: any) => (
-            <MusicCard album={album} client:visible />
-          ))}
-        </div>
-      ) : (
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-          {fallbackReleases.map((release) => (
-            <a
-              href={release.spotifyUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="group flex items-center gap-3 p-4 rounded-lg border border-charcoal-800 hover:border-forest-700 hover:bg-charcoal-900/50 transition-all duration-200"
-            >
-              <svg class="w-5 h-5 shrink-0 text-forest-500 group-hover:text-forest-400 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
-              <span class="font-medium text-sm text-bone-200 group-hover:text-bone-100 transition-colors truncate">
-                {release.title}
-              </span>
-            </a>
-          ))}
-        </div>
-      )}
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+        {fallbackReleases.map((release) => (
+          <iframe
+            src={release.embedUrl}
+            title={release.title}
+            width="100%"
+            height="152"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+            class="rounded-lg"
+            style="border: 0;"
+          ></iframe>
+        ))}
+      </div>
     </div>
   </section>
 
