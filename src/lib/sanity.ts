@@ -62,7 +62,9 @@ export async function getSiteSettings() {
       biography,
       heroImage,
       contactEmail,
-      pressImages
+      pressImages,
+      documentaryVideo,
+      youtubeVideos
     }
   `);
 }

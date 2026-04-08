@@ -58,12 +58,28 @@ const fallbackReleases = [
 
 // ── Fallback bio ──
 const fallbackBio = [
-  "Där den amerikanska södern har sina vidsträckta prärier, har Vincent Jedselius Bergslagens spruckna asfalt och tystnaden från nedlagda fabriker. Under nästan 15 år som soloartist har han karvat ut en helt egen nisch i det svenska musiklandskapet: en röst för det glömda rostbältet.",
-  "Att kalla Vincent Jedselius för en countryartist är en sanning med modifikation. Hans sound vilar lika tungt i en tidlös blues-anda som i outlaw-genrens råa uppriktighet. Han byter ut cowboyhatten mot arbetshandskar och Nashville-glamouren mot en kantnött, svensk realism. Det är musik som doftar utflyttning, bryggkaffe och fuktig barrskog. En röst för de platser som sällan får plats i storstädernas lite glättigare popmaskineri.",
-  "Med en karriär som sträcker sig över ett decennium har Vincent etablerat sig som en av de mest autentiska rösterna inom svensk americana. Genom åren har han byggt ett gediget CV på vägarna och spelat på allt från pizzerior i Bergslagen till fullstora festivalscener ute i landet.",
-  "Hans artisteri vilar på en unik kontrastverkan. Genom träffsäker satir och svart humor skildrar han vardagen i våra svenska småstäder. Men under ytan av lokala referenser bultar bluesens bottenlösa allvar om stolthet, slit och den melankoli som uppstår när industrins hammarslag tystnar.",
-  "Vincent Jedselius är inte bara en musiker; han är en krönikör över ett Sverige som ofta glöms bort, levererat med en röst som bär på både tyngden av många års erfarenhet och en orubblig kärlek till ursprunget.",
+  "Där den amerikanska södern har sina prärier, har Vincent Jedselius Bergslagens spruckna asfalt och tystnaden från nedlagda fabriker. I mer än ett decennium har han karvat ut en egen nisch i det svenska musiklandskapet som en röst för bruksorterna.",
+  "Att kalla Vincent för en renodlad countryartist är en förenkling. Hans sound vilar lika mycket i bluesens enkelhet som i en rå, svensk realism. Här byts Nashville-glamouren ut mot doften av bryggkaffe och fuktig barrskog – musik för de platser som sällan får utrymme i storstädernas popmaskineri.",
+  "Med många mil på vägarna har han byggt sin erfarenhet på allt från lokala pizzerior till festivalscener. Genom träffsäker humor och satir skildrar han vardagen i småstaden, men under ytan finns ett allvar om slit, stolthet och den melankoli som dröjer kvar när industrin tystnat.",
+  "Vincent Jedselius sjunger om det Sverige som ofta glöms bort, levererat med en ärlig röst och en tydlig kärlek till rötterna.",
 ];
+
+function getYouTubeId(url: string) {
+  if (!url) return "";
+  const match = url.match(/[?&]v=([^&]+)/) || url.match(/embed\/([^?]+)/) || url.match(/youtu\.be\/([^?]+)/);
+  return match ? match[1] : "";
+}
+
+const fallbackYoutubeVideos = [
+  { url: "https://www.youtube.com/embed/ILoNFcOGLMY", title: "Kom Fattigdom", description: "Bildmaterial från Rune Lindströms film \"Fagersta: Stålets och arbetets stad.\"" },
+  { url: "https://www.youtube.com/embed/YxQ7WmdM3XA", title: "\"66AN\"", description: "Live från Clarion Örebro" },
+  { url: "https://www.youtube.com/embed/Kpg47xr6sOw", title: "\"Strömsholms Kanal\"", description: "Live i Halvarsviken" }
+];
+const fallbackDocumentary = "https://www.youtube.com/embed/B6q9y2d-IBc";
+
+const documentaryVideoUrl = settings?.documentaryVideo || fallbackDocumentary;
+const documentaryVideoId = getYouTubeId(documentaryVideoUrl);
+const youtubeVideos = settings?.youtubeVideos?.length > 0 ? settings.youtubeVideos : fallbackYoutubeVideos;
 
 // ── Date formatting helpers ──
 function formatDateShort(dateStr: string) {
@@ -222,65 +238,59 @@ function formatDateShort(dateStr: string) {
     </div>
   </section>
 
-  <!-- ═══════════════════ MUSIC / VIDEO ═══════════════════ -->
+  <!-- ═══════════════════ LYSSNA & TITTA ═══════════════════ -->
   <section id="musik" class="py-24 px-6 bg-charcoal-900/40">
     <div class="max-w-[var(--container-max)] mx-auto">
-      <h2 class="text-3xl md:text-4xl font-heading font-bold mb-12 text-center">
-        Musik
+      <h2 class="text-3xl md:text-4xl font-heading font-bold mb-16 text-center">
+        Lyssna & Titta
       </h2>
 
-      <!-- YouTube Embeds -->
-      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
-        <div>
-          <div class="aspect-video rounded-lg overflow-hidden bg-charcoal-800">
-            <iframe
-              src="https://www.youtube.com/embed/ILoNFcOGLMY"
-              title="Vincent Jedselius - Kom Fattigdom"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              loading="lazy"
-              class="w-full h-full"
-            ></iframe>
+      <!-- LYSSNA -->
+      <div class="mb-24">
+        <h3 class="text-2xl font-heading font-bold mb-8 text-center text-bone-100">Lyssna</h3>
+        {albums && albums.length > 0 ? (
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            {albums.map((album: any) => (
+              <MusicCard album={album} client:visible />
+            ))}
           </div>
-          <p class="mt-3 text-sm text-bone-300">
-            <span class="font-heading font-semibold text-bone-100">Kom Fattigdom</span>
-            <span class="text-charcoal-600"> — Bildmaterial från Rune Lindströms film "Fagersta: Stålets och arbetets stad."</span>
-          </p>
-        </div>
-        <div>
-          <div class="aspect-video rounded-lg overflow-hidden bg-charcoal-800">
-            <iframe
-              src="https://www.youtube.com/embed/YxQ7WmdM3XA"
-              title="Vincent Jedselius - 66AN Live i Örebro"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              loading="lazy"
-              class="w-full h-full"
-            ></iframe>
+        ) : (
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
+            {fallbackReleases.map((release) => (
+              <iframe
+                src={release.embedUrl}
+                title={release.title}
+                width="100%"
+                height="80"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+                class="rounded-lg"
+                style="border: 0;"
+              ></iframe>
+            ))}
           </div>
-          <p class="mt-3 text-sm text-bone-300">
-            <span class="font-heading font-semibold text-bone-100">"66AN"</span>
-            <span class="text-charcoal-600"> — Live från Clarion Örebro</span>
-          </p>
-        </div>
+        )}
       </div>
 
-      <!-- Releases as Spotify embeds -->
-      <h3 class="text-2xl font-heading font-bold mb-8 text-center">Släpp</h3>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
-        {fallbackReleases.map((release) => (
-          <iframe
-            src={release.embedUrl}
-            title={release.title}
-            width="100%"
-            height="80"
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy"
-            class="rounded-lg"
-            style="border: 0;"
-          ></iframe>
-        ))}
+      <!-- TITTA -->
+      <div>
+        <h3 class="text-2xl font-heading font-bold mb-8 text-center text-bone-100">Titta</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {youtubeVideos.map((video: any) => {
+            const vidId = getYouTubeId(video.url);
+            return (
+              <div>
+                <div class="aspect-video rounded-lg overflow-hidden bg-charcoal-800 shadow-xl border border-charcoal-800">
+                  <lite-youtube videoid={vidId} playlabel={video.title} class="w-full h-full object-cover"></lite-youtube>
+                </div>
+                <p class="mt-4 text-sm text-bone-300">
+                  <span class="font-heading font-semibold text-bone-100">{video.title}</span>
+                  {video.description && <span class="text-charcoal-600"> — {video.description}</span>}
+                </p>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   </section>
@@ -316,6 +326,16 @@ function formatDateShort(dateStr: string) {
             </div>
           )}
         </div>
+      </div>
+
+      <div class="max-w-4xl mx-auto mt-20">
+        <h3 class="text-2xl md:text-3xl font-heading font-bold mb-6 text-center">Till Bergslagen: Vincent Jedselius och bandet</h3>
+        <div class="aspect-video rounded-lg overflow-hidden bg-charcoal-800 shadow-xl border border-charcoal-800">
+          <lite-youtube videoid={documentaryVideoId} playlabel="Till Bergslagen" class="w-full h-full object-cover"></lite-youtube>
+        </div>
+        <p class="mt-4 text-center text-bone-300 text-lg">
+          En liten film om Bergslagen, musik och bruksortsnostalgi.
+        </p>
       </div>
     </div>
   </section>
