@@ -76,14 +76,17 @@ function formatDateShort(dateStr: string) {
 
 <Layout>
   <!-- ═══════════════════ HERO ═══════════════════ -->
-  <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <section class="relative min-h-screen flex items-start md:items-center justify-center overflow-hidden pt-32 md:pt-0">
     <div class="absolute inset-0">
-      <img
-        src={heroImageUrl || "/images/hero.jpg"}
-        alt="Vincent Jedselius vid järnvägen i Bergslagen"
-        class="w-full h-full object-cover"
-        loading="eager"
-      />
+      <picture>
+        <source media="(max-width: 768px)" srcset="/images/hero-mobile.jpg" />
+        <img
+          src={heroImageUrl || "/images/hero.jpg"}
+          alt="Vincent Jedselius vid järnvägen i Bergslagen"
+          class="w-full h-full object-cover object-[center_70%] md:object-center"
+          loading="eager"
+        />
+      </picture>
       <div class="absolute inset-0 bg-gradient-to-t from-charcoal-950 via-charcoal-950/60 to-transparent" />
     </div>
 
