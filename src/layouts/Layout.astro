@@ -1,0 +1,101 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title = "Vincent Jedselius — Musik från Bergslagen",
+  description = "Officiell hemsida för Vincent Jedselius. Spelningar, musik och kontakt.",
+  ogImage = "/images/og-image.jpg",
+} = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://vincentjedselius.se");
+---
+
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl.href} />
+
+    <!-- OpenGraph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={canonicalUrl.href} />
+    <meta property="og:locale" content="sv_SE" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+  </head>
+  <body class="min-h-screen bg-charcoal-950 text-bone-100">
+    <header class="fixed top-0 w-full z-50 bg-charcoal-950/90 backdrop-blur-sm border-b border-charcoal-800">
+      <nav class="max-w-[var(--container-max)] mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="/" class="font-heading text-xl font-bold tracking-wide text-bone-100 hover:text-gold transition-colors">
+          Vincent Jedselius
+        </a>
+        <ul class="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide uppercase">
+          <li><a href="#spelningar" class="text-bone-300 hover:text-bone-100 transition-colors">Spelningar</a></li>
+          <li><a href="#musik" class="text-bone-300 hover:text-bone-100 transition-colors">Musik</a></li>
+          <li><a href="#om" class="text-bone-300 hover:text-bone-100 transition-colors">Om</a></li>
+          <li><a href="#kontakt" class="text-bone-300 hover:text-bone-100 transition-colors">Kontakt</a></li>
+        </ul>
+        <button id="mobile-menu-btn" class="md:hidden text-bone-100" aria-label="Meny">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </nav>
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="hidden md:hidden bg-charcoal-900 border-b border-charcoal-800">
+        <ul class="flex flex-col items-center gap-4 py-6 text-sm font-medium tracking-wide uppercase">
+          <li><a href="#spelningar" class="text-bone-300 hover:text-bone-100 transition-colors">Spelningar</a></li>
+          <li><a href="#musik" class="text-bone-300 hover:text-bone-100 transition-colors">Musik</a></li>
+          <li><a href="#om" class="text-bone-300 hover:text-bone-100 transition-colors">Om</a></li>
+          <li><a href="#kontakt" class="text-bone-300 hover:text-bone-100 transition-colors">Kontakt</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="border-t border-charcoal-800 py-8 mt-20">
+      <div class="max-w-[var(--container-max)] mx-auto px-6 text-center text-sm text-charcoal-600">
+        <p>&copy; {new Date().getFullYear()} Vincent Jedselius. Alla rättigheter förbehållna.</p>
+      </div>
+    </footer>
+
+    <script>
+      const btn = document.getElementById("mobile-menu-btn");
+      const menu = document.getElementById("mobile-menu");
+      btn?.addEventListener("click", () => menu?.classList.toggle("hidden"));
+      // Close mobile menu on link click
+      menu?.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => menu?.classList.add("hidden"));
+      });
+    </script>
+  </body>
+</html>

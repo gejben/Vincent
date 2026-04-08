@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+/* ── Bergslagen-noir Theme ── */
+@theme {
+  /* Colors */
+  --color-charcoal-950: #0d0f0e;
+  --color-charcoal-900: #1a1d1b;
+  --color-charcoal-800: #272b28;
+  --color-charcoal-700: #353a37;
+  --color-charcoal-600: #4a504d;
+
+  --color-forest-900: #0f1f14;
+  --color-forest-800: #1a3324;
+  --color-forest-700: #264d36;
+  --color-forest-600: #336648;
+  --color-forest-500: #40805a;
+
+  --color-earth-700: #5c4a3a;
+  --color-earth-600: #7a6350;
+  --color-earth-500: #967b66;
+  --color-earth-400: #b09580;
+  --color-earth-300: #c9b09d;
+
+  --color-bone-100: #f5f0eb;
+  --color-bone-200: #e8dfd6;
+  --color-bone-300: #d4c8bb;
+
+  --color-moss: #5a7a5a;
+  --color-rust: #8b4513;
+  --color-gold: #b8963e;
+
+  /* Fonts */
+  --font-heading: "Playfair Display", "Georgia", serif;
+  --font-body: "Inter", "Helvetica Neue", sans-serif;
+
+  /* Spacing / sizing */
+  --container-max: 1200px;
+}
+
+/* ── Base styles ── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-charcoal-950);
+    color: var(--color-bone-100);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-bone-100);
+  }
+
+  a {
+    color: var(--color-earth-400);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  a:hover {
+    color: var(--color-gold);
+  }
+
+  ::selection {
+    background-color: var(--color-forest-700);
+    color: var(--color-bone-100);
+  }
+}
