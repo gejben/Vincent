@@ -368,18 +368,13 @@ function formatDateShort(dateStr: string) {
       <div class="max-w-3xl mx-auto grid md:grid-cols-2 gap-12">
         <!-- Contact form -->
         <form
-          name="contact"
+          action="https://formsubmit.co/booking@bridgefieldbookings.se"
           method="POST"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
           class="space-y-5"
         >
-          <input type="hidden" name="form-name" value="contact" />
-          <p class="hidden">
-            <label>
-              Fyll inte i detta: <input name="bot-field" />
-            </label>
-          </p>
+          <input type="hidden" name="_subject" value="Nytt meddelande från vincentjedselius.se" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="text" name="_honey" style="display:none" />
 
           <div>
             <label for="name" class="block text-sm font-medium text-bone-300 mb-2">Namn</label>
