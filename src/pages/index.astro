@@ -350,8 +350,8 @@ function formatDateShort(dateStr: string) {
       <div class="max-w-4xl mx-auto mt-20">
         <h3 class="text-2xl md:text-3xl font-heading font-bold mb-6 text-center">Pressbilder</h3>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {settings?.pressImages?.length > 0 ? (
-            settings.pressImages.map((img: any) => {
+          {settings?.pressImages?.filter((img: any) => img?.asset)?.length > 0 ? (
+            settings.pressImages.filter((img: any) => img?.asset).map((img: any) => {
               const thumbUrl = urlFor(img).width(400).height(500).format("webp").url();
               const fullUrl = urlFor(img).width(1920).format("webp").url();
               return (
