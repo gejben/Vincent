@@ -14,13 +14,15 @@ const {
 } = Astro.props;
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://vincentjedselius.se");
+// OG-bilder måste vara absoluta URL:er för att Facebook/Slack m.fl. ska visa dem
+const ogImageUrl = new URL(ogImage, Astro.site ?? "https://vincentjedselius.se").href;
 ---
 
 <!doctype html>
 <html lang="sv">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="/images/logo.png" />
+    <link rel="icon" type="image/png" href="/images/logo-96.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
 
@@ -42,7 +44,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://vincentj
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:image" content={ogImageUrl} />
     <meta property="og:url" content={canonicalUrl.href} />
     <meta property="og:locale" content="sv_SE" />
 
@@ -50,13 +52,13 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://vincentj
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image" content={ogImageUrl} />
   </head>
   <body class="min-h-screen bg-charcoal-950 text-bone-100">
     <header class="fixed top-0 w-full z-50 bg-charcoal-950/90 backdrop-blur-sm border-b border-charcoal-800">
       <nav class="max-w-[var(--container-max)] mx-auto px-6 py-4 flex items-center justify-between">
         <a href="/" class="flex items-center gap-3 text-bone-100 hover:text-gold transition-colors">
-          <img src="/images/logo.png" alt="" class="w-8 h-8" />
+          <img src="/images/logo-96.png" alt="" class="w-8 h-8" />
           <span class="font-heading text-xl font-bold tracking-wide">Vincent Jedselius</span>
         </a>
         <ul class="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide uppercase">
@@ -65,7 +67,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://vincentj
           <li><a href="#om" class="text-bone-300 hover:text-bone-100 transition-colors">Om</a></li>
           <li><a href="#kontakt" class="text-bone-300 hover:text-bone-100 transition-colors">Kontakt</a></li>
         </ul>
-        <button id="mobile-menu-btn" class="md:hidden text-bone-100" aria-label="Meny">
+        <button id="mobile-menu-btn" class="md:hidden text-bone-100" aria-label="Meny" aria-expanded="false" aria-controls="mobile-menu">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
@@ -88,7 +90,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://vincentj
 
     <footer class="border-t border-charcoal-800 py-12 mt-20">
       <div class="max-w-[var(--container-max)] mx-auto px-6 flex flex-col items-center gap-4">
-        <img src="/images/logo.png" alt="Vincent Jedselius" class="w-12 h-12 opacity-40" />
+        <img src="/images/logo-96.png" alt="Vincent Jedselius" class="w-12 h-12 opacity-40" />
         <p class="text-sm text-charcoal-600">&copy; {new Date().getFullYear()} Vincent Jedselius. Alla rättigheter förbehållna.</p>
       </div>
     </footer>
@@ -96,10 +98,16 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://vincentj
     <script>
       const btn = document.getElementById("mobile-menu-btn");
       const menu = document.getElementById("mobile-menu");
-      btn?.addEventListener("click", () => menu?.classList.toggle("hidden"));
+      btn?.addEventListener("click", () => {
+        const isOpen = !menu?.classList.toggle("hidden");
+        btn.setAttribute("aria-expanded", String(isOpen));
+      });
       // Close mobile menu on link click
       menu?.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => menu?.classList.add("hidden"));
+        link.addEventListener("click", () => {
+          menu?.classList.add("hidden");
+          btn?.setAttribute("aria-expanded", "false");
+        });
       });
     </script>
   </body>
