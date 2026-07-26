@@ -53,6 +53,9 @@ const ogImageUrl = new URL(ogImage, Astro.site ?? "https://vincentjedselius.se")
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
+
+    <!-- Cloudflare Web Analytics (cookiefri, ingen individspårning) -->
+    <script is:inline type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "b4a54e89f4dc47e1ac1bfaf627e8304b"}'></script>
   </head>
   <body class="min-h-screen bg-charcoal-950 text-bone-100">
     <header class="fixed top-0 w-full z-50 bg-charcoal-950/90 backdrop-blur-sm border-b border-charcoal-800">
