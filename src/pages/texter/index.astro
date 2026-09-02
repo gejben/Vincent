@@ -1,0 +1,56 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getReleases } from "../../data/lyrics";
+
+const releases = await getReleases();
+---
+
+<Layout
+  title="Texter — Vincent Jedselius"
+  description="Låttexter av Vincent Jedselius, grupperade per skiva."
+>
+  <section class="pt-36 pb-24 px-6">
+    <div class="max-w-[var(--container-max)] mx-auto">
+      <h1 class="text-4xl md:text-5xl font-heading font-bold mb-4 text-center">
+        Texter
+      </h1>
+      <p class="text-center text-charcoal-600 text-sm mb-16 tracking-wide uppercase">
+        Låttexter per skiva
+      </p>
+
+      <div class="max-w-2xl mx-auto space-y-16">
+        {releases.map((release) => (
+          <div>
+            <h2 class="text-2xl font-heading font-bold mb-6 text-bone-100 border-b border-charcoal-800 pb-3">
+              {release.title}
+            </h2>
+            <ul class="space-y-1">
+              {release.songs.map((song, i) => (
+                <li>
+                  {song.lyrics ? (
+                    <a
+                      href={`/texter/${song.slug}/`}
+                      class="flex items-baseline gap-4 p-3 -mx-3 rounded-lg text-bone-200 hover:text-bone-100 hover:bg-charcoal-900/50 transition-colors group"
+                    >
+                      <span class="text-xs font-bold text-forest-500 w-6 shrink-0 text-right">{i + 1}</span>
+                      <span class="font-medium">{song.title}</span>
+                      <svg class="w-4 h-4 ml-auto shrink-0 text-charcoal-600 group-hover:text-forest-500 transition-colors self-center" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </a>
+                  ) : (
+                    <span class="flex items-baseline gap-4 p-3 -mx-3 text-charcoal-600">
+                      <span class="text-xs font-bold w-6 shrink-0 text-right">{i + 1}</span>
+                      <span>{song.title}</span>
+                      <span class="ml-auto text-xs italic self-center shrink-0">text kommer</span>
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -11,6 +11,7 @@ Logga in här: https://vincent-jedselius.sanity.studio/
 
 Spelning        → Listan med kommande och tidigare spelningar
 Släpp           → Diskografi-sektionen (skivor, singlar, EP:s)
+Texter (skiva)  → Texter-sidan (låttexter grupperade per skiva)
 Inställningar   → Allt annat: hero-bild, biografi, YouTube-klipp, dokumentärvideo, kontaktmail, pressbilder
 
 
@@ -61,7 +62,30 @@ Lägga till ett nytt släpp:
 Släppen sorteras automatiskt med det nyaste först.
 
 
-3. INSTÄLLNINGAR (HERO-BILD, BIO, VIDEOS M.M.)
+3. TEXTER (LÅTTEXTER)
+---------------------
+
+Klicka på "Texter (skiva)" i vänstermenyn. Varje dokument är en skiva (eller gruppen "Singlar") med sina låtar. Alla skivor och låtar är redan inlagda.
+
+Lägga in en låttext:
+  1. Öppna skivan låten ligger på
+  2. Klicka på låten i listan
+  3. Klistra in texten i fältet "Låttext" — radbrytningar och tomrader mellan verser bevaras precis som du skriver dem
+  4. Klicka "Publish"
+
+Låtar UTAN text visas som "text kommer" på hemsidan och går inte att klicka på. Så fort du lägger in en text blir låten klickbar med en egen sida.
+
+Lägga till en ny låt:
+  1. Öppna skivan → klicka "Add item" under Låtar
+  2. Fyll i Titel
+  3. Klicka "Generate" vid "Webbadress (slug)" — den skapas från titeln
+  4. Klistra in låttexten (eller lämna tomt så länge)
+  5. Klicka "Publish"
+
+Ny skiva: klicka "Create new" och fyll i Skiva/grupp-namnet plus Sortering (lägre tal = högre upp på sidan; Singlar har 1).
+
+
+4. INSTÄLLNINGAR (HERO-BILD, BIO, VIDEOS M.M.)
 ------------------------------------------------
 
 Klicka på "Inställningar" i vänstermenyn. Här finns bara ETT dokument som styr flera delar av sajten:

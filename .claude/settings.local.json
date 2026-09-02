@@ -23,7 +23,22 @@
       "Bash(node:*)",
       "mcp__playwright__browser_press_key",
       "mcp__playwright__browser_wait_for",
-      "mcp__playwright__browser_evaluate"
+      "mcp__playwright__browser_evaluate",
+      "Bash(grep -v \"^\\\\.$\\\\|^\\\\.\\\\.$\")",
+      "Bash(vercel --version)",
+      "Bash(npx sanity:*)",
+      "Bash(git -C \"D:\\\\code\\\\vincent\" log --oneline -15)",
+      "WebFetch(domain:vincentjedselius.se)",
+      "WebFetch(domain:open.spotify.com)",
+      "Bash(npm uninstall *)",
+      "Bash(git rm *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4321/texter/)",
+      "Bash(curl -s -o /dev/null -w \"texter:%{http_code} \" http://localhost:4322/texter/)",
+      "Bash(curl -s -o /dev/null -w \"66an:%{http_code}\" http://localhost:4322/texter/66an/)",
+      "Bash(curl -s http://localhost:4322/texter/)",
+      "Bash(curl -s http://localhost:4322/texter/66an/)",
+      "Bash(git stash *)",
+      "WebFetch(domain:formsubmit.co)"
     ]
   }
 }

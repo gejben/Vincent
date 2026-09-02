@@ -1,0 +1,48 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getReleases } from "../../data/lyrics";
+
+export async function getStaticPaths() {
+  const releases = await getReleases();
+  return releases.flatMap((release) =>
+    release.songs
+      .filter((song) => song.lyrics)
+      .map((song) => ({
+        params: { slug: song.slug },
+        props: { song, releaseTitle: release.title },
+      }))
+  );
+}
+
+const { song, releaseTitle } = Astro.props;
+---
+
+<Layout
+  title={`${song.title} — Texter — Vincent Jedselius`}
+  description={`Låttexten till "${song.title}" av Vincent Jedselius.`}
+>
+  <section class="pt-36 pb-24 px-6">
+    <div class="max-w-2xl mx-auto">
+      <a
+        href="/texter/"
+        class="inline-flex items-center gap-2 text-sm text-bone-300/60 hover:text-forest-500 transition-colors mb-10"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Alla texter
+      </a>
+
+      <p class="text-xs font-bold tracking-wider text-forest-500 uppercase mb-2">
+        {releaseTitle}
+      </p>
+      <h1 class="text-4xl md:text-5xl font-heading font-bold mb-12">
+        {song.title}
+      </h1>
+
+      <div class="text-bone-300 leading-loose text-lg whitespace-pre-line">
+        {song.lyrics}
+      </div>
+    </div>
+  </section>
+</Layout>

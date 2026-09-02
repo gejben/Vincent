@@ -55,6 +55,20 @@ export async function getDiscography() {
   `);
 }
 
+export async function getLyricsReleases() {
+  if (!client) return [];
+  return client.fetch(`
+    *[_type == "lyricsRelease"] | order(sortOrder asc) {
+      title,
+      "songs": songs[]{
+        title,
+        "slug": slug.current,
+        lyrics
+      }
+    }
+  `);
+}
+
 export async function getSiteSettings() {
   if (!client) return null;
   return client.fetch(`
